@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import Container from "react-bootstrap/Container";
 import classes from "./Products.module.css";
@@ -8,24 +8,40 @@ import { Route } from "react-router-dom";
 import Link from "react";
 
 const Products = (props) => {
-  const [showModal, setShowModal] = useState(false);
+  const [showUIModal, setShowUIModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState([]);
+  const [editedProduct, setEditedProduct] = useState([]);
+  const [products, setProducts] = useState([]);
 
-  const hideModalHandler = () => {
-    setShowModal(false);
+  useEffect(() => {
+    setProducts(props.products);
+  }, []);
+
+  const hideUIModalHandler = () => {
+    setShowUIModal(false);
   };
 
   const showModalHandler = (id) => {
-    console.log(id);
     setSelectedItem(id);
-    setShowModal(true);
+    setShowUIModal(true);
   };
 
   const setSelectedItem = (id) => {
-    const selectedProduct = props.products.filter((item) => {
+    const selectedProduct = products.filter((item) => {
       return item.id === id;
     });
     setSelectedProduct(selectedProduct);
+  };
+
+  const editItemHandler = (id) => {
+    console.log("in this function");
+  };
+
+  const removeItemHandler = (id) => {
+    const remainingProducts = products.filter((item) => {
+      return item.id !== id;
+    });
+    setProducts(remainingProducts);
   };
 
   return (
@@ -42,30 +58,52 @@ const Products = (props) => {
           </tr>
         </thead>
         <tbody>
-          {props.products.map(function (item) {
+          {products.map(function (item) {
             return (
-              <tr
-                className={classes.item}
-                onClick={() => {
-                  showModalHandler(item.id);
-                }}
-              >
+              <tr className={classes.item}>
                 <td>{item.id}</td>
                 <td>{item.productName}</td>
                 <td>{item.productNumber}</td>
                 <td>{item.region}</td>
                 <td>{item.family}</td>
                 <td>{item.type}</td>
+                <td>
+                  <button
+                    onClick={() => {
+                      showModalHandler(item.id);
+                    }}
+                  >
+                    View
+                  </button>
+                </td>
+                <td>
+                  <button
+                    onClick={() => {
+                      editItemHandler(item.id);
+                    }}
+                  >
+                    Edit
+                  </button>
+                </td>
+                <td>
+                  <button
+                    onClick={() => {
+                      removeItemHandler(item.id);
+                    }}
+                  >
+                    Delete
+                  </button>
+                </td>
               </tr>
             );
           })}
         </tbody>
       </Table>
 
-      {showModal && (
+      {showUIModal && (
         <UIModal
           selectedProduct={selectedProduct}
-          onHideModal={hideModalHandler}
+          onHideModal={hideUIModalHandler}
         ></UIModal>
       )}
     </Container>

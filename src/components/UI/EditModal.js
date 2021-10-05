@@ -3,22 +3,14 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-function UIModal(props) {
+function EditModal(props) {
   return (
     <>
       <Modal show={true} onHide={props.onHideModal}>
         <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <ul>
-            <li>{props.selectedProduct[0].productName}</li>
-            <li>{props.selectedProduct[0].productNumber}</li>
-            <li>{props.selectedProduct[0].region}</li>
-            <li>{props.selectedProduct[0].family}</li>
-            <li>{props.selectedProduct[0].type}</li>
-          </ul>
-        </Modal.Body>
+        <Modal.Body>This modal is for editing</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={props.onHideModal}>
             Close
