@@ -1,0 +1,8 @@
+table {
+  margin-top: 15%;
+  background: lightblue;
+}
+
+tr.item {
+  cursor: pointer;
+}

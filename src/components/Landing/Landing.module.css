@@ -1,0 +1,39 @@
+.home {
+  margin-top: 10%;
+}
+
+.greeting {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: block;
+  padding: 4rem;
+  text-align: center;
+  font-size: 4rem;
+  margin: auto;
+  background: white;
+  opacity: 80%;
+  border-radius: 5px;
+}
+
+.home a {
+  padding: 10px;
+  background: #0197f6;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  width: 50%;
+  text-align: center;
+  text-decoration: none;
+}
+
+.inventory-action,
+.products-action {
+  margin: 2rem 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 5px;
+}
