@@ -6,3 +6,9 @@ table {
 tr.item {
   cursor: pointer;
 }
+
+table button {
+  border-radius: 5px;
+  padding: 5px 10px;
+  background-color: #fff;
+}

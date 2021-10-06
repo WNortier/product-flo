@@ -5,7 +5,6 @@ const NameDropdown = (props) => {
   const ctx = useContext(AuthContext);
 
   const dropdownChangeHandler = (event) => {
-    console.log(event.target.value);
     const products = [...ctx.products];
 
     if (event.target.value === "All Products") {
@@ -15,7 +14,6 @@ const NameDropdown = (props) => {
         return p.productName === event.target.value;
       });
       props.onFilterProducts(filtered);
-      console.log(filtered);
     }
   };
 

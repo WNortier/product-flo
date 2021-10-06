@@ -6,6 +6,8 @@ import Container from "react-bootstrap/Container";
 import classes from "./Products.module.css";
 import UIModal from "../UI/UIModal";
 import EditModal from "../UI/EditModal";
+import AddProductModal from "../UI/AddProductModal";
+
 import NameDropdown from "../UI/NameDropdown";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -14,6 +16,7 @@ const Products = (props) => {
 
   const [showUIModal, setShowUIModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
+  const [showAddProductModal, setShowAddProductModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState([]);
   const [editedProduct, setEditedProduct] = useState([]);
   const [products, setProducts] = useState([]);
@@ -40,6 +43,14 @@ const Products = (props) => {
     setShowEditModal(true);
   };
 
+  const hideAddModalHandler = () => {
+    setShowAddProductModal(false);
+  };
+
+  const showAddModalHandler = (id) => {
+    setShowAddProductModal(true);
+  };
+
   const setSelectedItem = (id) => {
     const selectedProduct = products.filter((item) => {
       return item.id === id;
@@ -64,18 +75,23 @@ const Products = (props) => {
               {" "}
               <NameDropdown
                 onFilterProducts={setProducts}
-                items={ctx.products}
+                products={products}
               ></NameDropdown>
             </th>
-            <th>Product Number</th>
-            <th>Region</th>
-            <th>Family</th>
-            <th>Type</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
           </tr>
         </thead>
         <thead>
           <tr>
-            <th>#</th>
+            <th>
+              {" "}
+              <button onClick={showAddModalHandler}>
+                <i class="fas fa-plus"></i>
+              </button>
+            </th>
             <th>Product Name</th>
             <th>Product Number</th>
             <th>Region</th>
@@ -138,6 +154,14 @@ const Products = (props) => {
           onHideModal={hideEditModalHandler}
           onSaveProductEdit={setProducts}
         ></EditModal>
+      )}
+
+      {showAddProductModal && (
+        <AddProductModal
+          onHideModal={hideAddModalHandler}
+          onAddProduct={setProducts}
+          products={products}
+        ></AddProductModal>
       )}
     </Container>
   );
