@@ -6,7 +6,9 @@ import Container from "react-bootstrap/Container";
 import classes from "./Products.module.css";
 import UIModal from "../UI/UIModal";
 import EditModal from "../UI/EditModal";
-
+import NameDropdown from "../UI/NameDropdown";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 const Products = (props) => {
   const ctx = useContext(AuthContext);
 
@@ -55,6 +57,22 @@ const Products = (props) => {
   return (
     <Container>
       <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th></th>
+            <th>
+              {" "}
+              <NameDropdown
+                onFilterProducts={setProducts}
+                items={ctx.products}
+              ></NameDropdown>
+            </th>
+            <th>Product Number</th>
+            <th>Region</th>
+            <th>Family</th>
+            <th>Type</th>
+          </tr>
+        </thead>
         <thead>
           <tr>
             <th>#</th>

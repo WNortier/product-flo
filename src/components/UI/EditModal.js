@@ -67,8 +67,8 @@ function EditModal(props) {
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={formSubmitHandler}>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Product Number</Form.Label>
+            <Form.Group className="mb-3">
+              <Form.Label>Product Name</Form.Label>
               <Form.Control
                 type="text"
                 value={productName}
@@ -76,7 +76,8 @@ function EditModal(props) {
                 onChange={productNameChangeHandler}
               />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3">
+              <Form.Label>Product Number</Form.Label>
               <Form.Control
                 type="text"
                 value={productNumber}
@@ -84,7 +85,8 @@ function EditModal(props) {
                 onChange={productNumberChangeHandler}
               />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3">
+              <Form.Label>Region</Form.Label>
               <Form.Control
                 type="text"
                 value={region}
@@ -92,7 +94,8 @@ function EditModal(props) {
                 onChange={productRegionChangeHandler}
               />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3">
+              <Form.Label>Family</Form.Label>
               <Form.Control
                 type="text"
                 value={family}
@@ -101,7 +104,8 @@ function EditModal(props) {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3">
+              <Form.Label>Type</Form.Label>
               <Form.Control
                 type="text"
                 value={productType}
