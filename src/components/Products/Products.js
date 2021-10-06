@@ -1,29 +1,41 @@
-import React from "react";
+import React, { useContext } from "react";
+import AuthContext from "../../store/auth-context";
 import { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import Container from "react-bootstrap/Container";
 import classes from "./Products.module.css";
 import UIModal from "../UI/UIModal";
-import { Route } from "react-router-dom";
-import Link from "react";
+import EditModal from "../UI/EditModal";
 
 const Products = (props) => {
+  const ctx = useContext(AuthContext);
+
   const [showUIModal, setShowUIModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState([]);
   const [editedProduct, setEditedProduct] = useState([]);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    setProducts(props.products);
+    setProducts(ctx.products);
   }, []);
 
   const hideUIModalHandler = () => {
     setShowUIModal(false);
   };
 
-  const showModalHandler = (id) => {
+  const showUIModalHandler = (id) => {
     setSelectedItem(id);
     setShowUIModal(true);
+  };
+
+  const hideEditModalHandler = () => {
+    setShowEditModal(false);
+  };
+
+  const showEditModalHandler = (id) => {
+    setSelectedItem(id);
+    setShowEditModal(true);
   };
 
   const setSelectedItem = (id) => {
@@ -31,10 +43,6 @@ const Products = (props) => {
       return item.id === id;
     });
     setSelectedProduct(selectedProduct);
-  };
-
-  const editItemHandler = (id) => {
-    console.log("in this function");
   };
 
   const removeItemHandler = (id) => {
@@ -70,7 +78,7 @@ const Products = (props) => {
                 <td>
                   <button
                     onClick={() => {
-                      showModalHandler(item.id);
+                      showUIModalHandler(item.id);
                     }}
                   >
                     View
@@ -79,7 +87,7 @@ const Products = (props) => {
                 <td>
                   <button
                     onClick={() => {
-                      editItemHandler(item.id);
+                      showEditModalHandler(item.id);
                     }}
                   >
                     Edit
@@ -105,6 +113,13 @@ const Products = (props) => {
           selectedProduct={selectedProduct}
           onHideModal={hideUIModalHandler}
         ></UIModal>
+      )}
+      {showEditModal && (
+        <EditModal
+          selectedProduct={selectedProduct}
+          onHideModal={hideEditModalHandler}
+          onSaveProductEdit={setProducts}
+        ></EditModal>
       )}
     </Container>
   );

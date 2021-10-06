@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import AuthContext from "../../store/auth-context";
+import React from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -7,8 +6,6 @@ import classes from "./Landing.module.css";
 import { Link } from "react-router-dom";
 
 const Home = (props) => {
-  const ctx = useContext(AuthContext);
-
   return (
     <Container className={classes.home}>
       <Row>

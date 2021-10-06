@@ -8,7 +8,7 @@ function UIModal(props) {
     <>
       <Modal show={true} onHide={props.onHideModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Product details</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <ul>
