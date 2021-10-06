@@ -33,7 +33,7 @@ const AddProductModal = (props) => {
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
-    const currentProducts = [...props.products];
+    const currentProducts = [...ctx.products];
     const newProduct = {
       id: uuidv4(),
       productName,
@@ -42,8 +42,9 @@ const AddProductModal = (props) => {
       family,
       productType,
     };
+    currentProducts.push(newProduct);
     ctx.products.push(newProduct);
-    props.onAddProduct(ctx.products);
+    props.onAddProduct(currentProducts);
     props.onHideModal();
   };
 

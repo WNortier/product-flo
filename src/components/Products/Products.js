@@ -62,6 +62,10 @@ const Products = (props) => {
     const remainingProducts = products.filter((item) => {
       return item.id !== id;
     });
+    const remainingContextProducts = ctx.products.filter((item) => {
+      return item.id !== id;
+    });
+    ctx.products = remainingContextProducts;
     setProducts(remainingProducts);
   };
 

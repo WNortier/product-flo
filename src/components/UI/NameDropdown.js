@@ -4,7 +4,12 @@ import classes from "./Dropdown.module.css";
 const NameDropdown = (props) => {
   const ctx = useContext(AuthContext);
 
+  const allProducts = [...ctx.products];
+  const removedDuplicatesArray = allProducts.filter(
+    (v, i, a) => a.findIndex((t) => t.productName === v.productName) === i
+  );
   const dropdownChangeHandler = (event) => {
+    console.log(removedDuplicatesArray);
     const products = [...ctx.products];
 
     if (event.target.value === "All Products") {
@@ -22,7 +27,7 @@ const NameDropdown = (props) => {
       <label for=""></label>
       <select onChange={dropdownChangeHandler} name="filter" id="filter">
         <option value="All Products">All Products</option>;
-        {ctx.products.map((item) => {
+        {removedDuplicatesArray.map((item) => {
           return <option value={item.productName}>{item.productName}</option>;
         })}
       </select>

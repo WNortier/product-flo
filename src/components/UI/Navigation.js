@@ -7,7 +7,7 @@ const Navigation = () => {
   return (
     <Navbar className={classes.navbar}>
       <Container>
-        <Navbar.Brand href="/">ProductFlo</Navbar.Brand>
+        <Link to="/">ProductFlo</Link>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>
