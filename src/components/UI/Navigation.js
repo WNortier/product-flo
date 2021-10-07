@@ -15,7 +15,7 @@ const Navigation = (props) => {
   return (
     <Navbar className={classes.navbar}>
       <Container>
-        <Link to="/">
+        <Link className={classes.brand} to="/">
           ProductFlo <i class="fas fa-wind"></i>
         </Link>
         <Navbar.Toggle />

@@ -66,6 +66,7 @@ function App() {
   const ctx = useContext(AuthContext);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [username, setUsername] = useState("");
   useEffect(() => {
     const loggedInStatus = JSON.parse(localStorage.getItem("isLoggedIn"));
     setIsLoggedIn(loggedInStatus);
@@ -76,7 +77,6 @@ function App() {
       <AuthContext.Provider
         value={{
           products: products,
-          username: "",
         }}
       >
         <Navigation
@@ -84,12 +84,12 @@ function App() {
           isLoggedIn={isLoggedIn}
         ></Navigation>
         <Route path="/" exact>
-          <Login onLogin={setIsLoggedIn}></Login>
+          <Login onLogin={setIsLoggedIn} onSetUsername={setUsername}></Login>
           {/* <Redirect to="/landing"></Redirect> */}
         </Route>
         {isLoggedIn && (
           <Route path="/landing">
-            <Landing></Landing>
+            <Landing user={username}></Landing>
           </Route>
         )}
         {isLoggedIn && (

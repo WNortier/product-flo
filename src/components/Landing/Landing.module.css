@@ -16,7 +16,13 @@
   border-radius: 5px;
 }
 
-.home a {
+.breadcrumb {
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.products-action a,
+.inventory-action a {
   padding: 10px;
   background: #0197f6;
   color: white;

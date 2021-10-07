@@ -7,8 +7,8 @@ import classes from "./Products.module.css";
 import UIModal from "../UI/UIModal";
 import EditModal from "../UI/EditModal";
 import AddProductModal from "../UI/AddProductModal";
-
 import NameDropdown from "../UI/NameDropdown";
+import { Link } from "react-router-dom";
 
 const Products = (props) => {
   const ctx = useContext(AuthContext);
@@ -69,6 +69,13 @@ const Products = (props) => {
 
   return (
     <Container>
+      <Link className={classes.breadcrumb} to="/landing">
+        Landing /
+      </Link>
+
+      <Link className={classes.breadcrumb} to="/products">
+        Products
+      </Link>
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -143,7 +150,6 @@ const Products = (props) => {
           })}
         </tbody>
       </Table>
-
       {showUIModal && (
         <UIModal
           selectedProduct={selectedProduct}
@@ -157,7 +163,6 @@ const Products = (props) => {
           onSaveProductEdit={setProducts}
         ></EditModal>
       )}
-
       {showAddProductModal && (
         <AddProductModal
           onHideModal={hideAddModalHandler}

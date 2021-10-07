@@ -7,6 +7,11 @@ table {
   background: lightblue;
 }
 
+.breadcrumb {
+  font-size: 20px;
+  text-decoration: none;
+}
+
 tr.item {
   cursor: pointer;
 }

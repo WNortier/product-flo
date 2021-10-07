@@ -51,6 +51,7 @@ const Login = (props) => {
     setEnteredPassword("");
     setEnteredPasswordTouched(false);
     props.onLogin(true);
+    props.onSetUsername(enteredName);
     localStorage.setItem("isLoggedIn", true);
     history.push("/landing");
   };
