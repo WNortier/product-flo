@@ -17,11 +17,10 @@ const Products = (props) => {
   const [showEditModal, setShowEditModal] = useState(false);
   const [showAddProductModal, setShowAddProductModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState([]);
-  const [editedProduct, setEditedProduct] = useState([]);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    setProducts(ctx.products);
+    setProducts(props.products);
   }, []);
 
   const hideUIModalHandler = () => {
@@ -73,7 +72,12 @@ const Products = (props) => {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th></th>
+            <th>
+              {" "}
+              <button onClick={showAddModalHandler}>
+                <i class="fas fa-plus"></i>
+              </button>
+            </th>
             <th>
               {" "}
               <NameDropdown
@@ -89,12 +93,7 @@ const Products = (props) => {
         </thead>
         <thead>
           <tr>
-            <th>
-              {" "}
-              <button onClick={showAddModalHandler}>
-                <i class="fas fa-plus"></i>
-              </button>
-            </th>
+            <th>#</th>
             <th>Product Name</th>
             <th>Product Number</th>
             <th>Region</th>

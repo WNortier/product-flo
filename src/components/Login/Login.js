@@ -4,7 +4,6 @@ import classes from "./Login.module.css";
 import { Link, useHistory } from "react-router-dom";
 import AuthContext from "../../store/auth-context";
 import { useContext } from "react";
-import { validate } from "uuid";
 
 const Login = (props) => {
   const history = useHistory();
@@ -52,6 +51,7 @@ const Login = (props) => {
     setEnteredPassword("");
     setEnteredPasswordTouched(false);
     props.onLogin(true);
+    localStorage.setItem("isLoggedIn", true);
     history.push("/landing");
   };
 
@@ -72,7 +72,7 @@ const Login = (props) => {
   };
 
   return (
-    <Form onSubmit={formSubmitHandler}>
+    <Form className={classes.login} onSubmit={formSubmitHandler}>
       <Form.Group className="mb-3">
         <Form.Label>Username</Form.Label>
         <Form.Control

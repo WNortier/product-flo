@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useEffect } from "react";
 import Navigation from "./components/UI/Navigation";
 import { useState } from "react";
 import Landing from "./components/Landing/Landing";
@@ -62,8 +63,13 @@ const products = [
 ];
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const ctx = useContext(AuthContext);
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  useEffect(() => {
+    const loggedInStatus = JSON.parse(localStorage.getItem("isLoggedIn"));
+    setIsLoggedIn(loggedInStatus);
+  }, []);
 
   return (
     <div className={classes.landing}>
@@ -73,7 +79,10 @@ function App() {
           username: "",
         }}
       >
-        <Navigation isLoggedIn={isLoggedIn}></Navigation>
+        <Navigation
+          onLogOut={setIsLoggedIn}
+          isLoggedIn={isLoggedIn}
+        ></Navigation>
         <Route path="/" exact>
           <Login onLogin={setIsLoggedIn}></Login>
           {/* <Redirect to="/landing"></Redirect> */}

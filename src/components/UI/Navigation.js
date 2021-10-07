@@ -2,8 +2,16 @@ import React from "react";
 import classes from "./Navigation.module.css";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
-import { Link } from "react-router-dom";
-const Navigation = () => {
+import { Link, useHistory } from "react-router-dom";
+const Navigation = (props) => {
+  const history = useHistory();
+
+  const logoutHandler = () => {
+    localStorage.clear();
+    history.push("/");
+    props.onLogOut(false);
+  };
+
   return (
     <Navbar className={classes.navbar}>
       <Container>
@@ -13,7 +21,9 @@ const Navigation = () => {
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>
-            Signed in as: <a href="#login">Mark Otto</a>
+            {props.isLoggedIn && (
+              <button onClick={logoutHandler}>Logout</button>
+            )}
           </Navbar.Text>
         </Navbar.Collapse>
       </Container>

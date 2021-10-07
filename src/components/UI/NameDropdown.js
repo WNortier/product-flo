@@ -8,8 +8,8 @@ const NameDropdown = (props) => {
   const removedDuplicatesArray = allProducts.filter(
     (v, i, a) => a.findIndex((t) => t.productName === v.productName) === i
   );
+
   const dropdownChangeHandler = (event) => {
-    console.log(removedDuplicatesArray);
     const products = [...ctx.products];
 
     if (event.target.value === "All Products") {
@@ -23,7 +23,7 @@ const NameDropdown = (props) => {
   };
 
   return (
-    <form className={classes.dropdown}>
+    <div className={classes.dropdown}>
       <label for=""></label>
       <select onChange={dropdownChangeHandler} name="filter" id="filter">
         <option value="All Products">All Products</option>;
@@ -31,7 +31,7 @@ const NameDropdown = (props) => {
           return <option value={item.productName}>{item.productName}</option>;
         })}
       </select>
-    </form>
+    </div>
   );
 };
 
