@@ -20,7 +20,7 @@ function EditModal(props) {
     setRegion(props.selectedProduct[0].region);
     setFamily(props.selectedProduct[0].family);
     setProductType(props.selectedProduct[0].type);
-  }, []);
+  }, [props.selectedProduct]);
 
   const productNameChangeHandler = (event) => {
     setProductName(event.target.value);

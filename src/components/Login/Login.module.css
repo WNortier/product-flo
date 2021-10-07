@@ -1,0 +1,41 @@
+form {
+  width: 25rem;
+  margin: auto;
+  background: lightblue;
+  padding: 25px;
+  margin-top: 10%;
+  border-radius: 5px;
+}
+
+form button {
+  background: white;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 18px;
+}
+
+form button:hover,
+form button:active {
+  background-color: rgb(131, 201, 224);
+  border-color: rgb(131, 201, 224);
+}
+
+form button:disabled,
+form button:disabled:hover,
+form button:disabled:active {
+  background-color: #ccc;
+  color: #292929;
+  border-color: #ccc;
+  cursor: not-allowed;
+}
+
+.error {
+  color: #b40e0e;
+}
+
+@media (max-width: 501px) {
+  form {
+    width: auto;
+    margin: 20px;
+  }
+}

@@ -1,12 +1,14 @@
-import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navigation from "./components/UI/Navigation";
+import { useState } from "react";
 import Landing from "./components/Landing/Landing";
 import classes from "./App.module.css";
 import { Route, Redirect } from "react-router-dom";
 import Products from "./components/Products/Products";
+import Login from "./components/Login/Login";
 import { v4 as uuidv4 } from "uuid";
 import AuthContext from "./store/auth-context";
+import { useContext } from "react";
 
 const products = [
   {
@@ -61,24 +63,31 @@ const products = [
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const ctx = useContext(AuthContext);
 
   return (
     <div className={classes.landing}>
       <AuthContext.Provider
         value={{
           products: products,
+          username: "",
         }}
       >
-        <Navigation></Navigation>
+        <Navigation isLoggedIn={isLoggedIn}></Navigation>
         <Route path="/" exact>
-          <Redirect to="/landing"></Redirect>
+          <Login onLogin={setIsLoggedIn}></Login>
+          {/* <Redirect to="/landing"></Redirect> */}
         </Route>
-        <Route path="/landing">
-          <Landing></Landing>
-        </Route>
-        <Route path="/products">
-          <Products products={products}></Products>
-        </Route>
+        {isLoggedIn && (
+          <Route path="/landing">
+            <Landing></Landing>
+          </Route>
+        )}
+        {isLoggedIn && (
+          <Route path="/products">
+            <Products products={products}></Products>
+          </Route>
+        )}
       </AuthContext.Provider>
     </div>
   );

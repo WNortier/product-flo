@@ -9,8 +9,7 @@ import EditModal from "../UI/EditModal";
 import AddProductModal from "../UI/AddProductModal";
 
 import NameDropdown from "../UI/NameDropdown";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+
 const Products = (props) => {
   const ctx = useContext(AuthContext);
 
