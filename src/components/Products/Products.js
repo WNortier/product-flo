@@ -21,7 +21,7 @@ const Products = (props) => {
 
   useEffect(() => {
     setProducts(props.products);
-  }, []);
+  }, [props.products]);
 
   const hideUIModalHandler = () => {
     setShowUIModal(false);
@@ -70,9 +70,8 @@ const Products = (props) => {
   return (
     <Container>
       <Link className={classes.breadcrumb} to="/landing">
-        Landing /
+        Landing/
       </Link>
-
       <Link className={classes.breadcrumb} to="/products">
         Products
       </Link>

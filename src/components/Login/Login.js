@@ -1,21 +1,16 @@
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 import Form from "react-bootstrap/Form";
 import classes from "./Login.module.css";
-import { Link, useHistory } from "react-router-dom";
-import AuthContext from "../../store/auth-context";
-import { useContext } from "react";
+import { useHistory } from "react-router-dom";
 
 const Login = (props) => {
   const history = useHistory();
-  const ctx = useContext(AuthContext);
 
   const [enteredName, setEnteredName] = useState("");
   const [enteredNameTouched, setEnteredNameTouched] = useState(false);
 
   const [enteredPassword, setEnteredPassword] = useState("");
   const [enteredPasswordTouched, setEnteredPasswordTouched] = useState(false);
-
-  // const [formIsValid, setFormIsValid] = useState(false);
 
   const enteredNameIsValid = enteredName.trim() !== "";
   const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched;
@@ -24,14 +19,6 @@ const Login = (props) => {
     enteredPassword !== "" && enteredPassword.length > 6;
   const enteredPasswordIsInvalid =
     !enteredPasswordIsValid && enteredPasswordTouched;
-
-  // useEffect(() => {
-  //   if (enteredNameIsValid) {
-  //     setFormIsValid(true);
-  //   } else {
-  //     setFormIsValid(false);
-  //   }
-  // }, [enteredNameIsValid]);
 
   let formIsValid = false;
 

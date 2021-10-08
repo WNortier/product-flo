@@ -7,12 +7,12 @@ import { Link } from "react-router-dom";
 
 const Home = (props) => {
   return (
-    <Container className={classes.home}>
+    <Container>
       <Link className={classes.breadcrumb} to="/landing">
-        Landing /
+        Landing
       </Link>
       <Row>
-        <Col md={12}>
+        <Col className={classes.home} md={12}>
           <div className={classes.greeting}>
             Good Morning {props.user}
             <br />
@@ -26,7 +26,7 @@ const Home = (props) => {
         </Col>
         <Col md={6}>
           <div className={classes["inventory-action"]}>
-            <Link to="/inventory">Inventory</Link>
+            <Link to="/landing">Inventory</Link>
           </div>
         </Col>
       </Row>

@@ -4,12 +4,11 @@ import Navigation from "./components/UI/Navigation";
 import { useState } from "react";
 import Landing from "./components/Landing/Landing";
 import classes from "./App.module.css";
-import { Route, Redirect } from "react-router-dom";
+import { Route } from "react-router-dom";
 import Products from "./components/Products/Products";
 import Login from "./components/Login/Login";
 import { v4 as uuidv4 } from "uuid";
 import AuthContext from "./store/auth-context";
-import { useContext } from "react";
 
 const products = [
   {
@@ -63,8 +62,6 @@ const products = [
 ];
 
 function App() {
-  const ctx = useContext(AuthContext);
-
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
   useEffect(() => {
