@@ -1,5 +1,6 @@
 import { React, useState } from "react";
 import Form from "react-bootstrap/Form";
+import Container from "react-bootstrap/Container";
 import classes from "./Login.module.css";
 import { useHistory } from "react-router-dom";
 
@@ -16,7 +17,7 @@ const Login = (props) => {
   const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched;
 
   const enteredPasswordIsValid =
-    enteredPassword !== "" && enteredPassword.length > 6;
+    enteredPassword !== "" && enteredPassword.length >= 5;
   const enteredPasswordIsInvalid =
     !enteredPasswordIsValid && enteredPasswordTouched;
 
@@ -60,46 +61,48 @@ const Login = (props) => {
   };
 
   return (
-    <Form className={classes.login} onSubmit={formSubmitHandler}>
-      <Form.Group className="mb-3">
-        <Form.Label>Username</Form.Label>
-        <Form.Control
-          type="text"
-          value={enteredName}
-          placeholder="Enter Username"
-          onChange={usernameChangeHandler}
-          onBlur={nameInputBlurHandler}
-        />
-        {nameInputIsInvalid && (
-          <p className={classes.error}>Name must not be empty.</p>
-        )}
-      </Form.Group>
-      <Form.Group className="mb-3">
-        <Form.Label>Password</Form.Label>
-        <Form.Control
-          type="password"
-          value={enteredPassword}
-          placeholder="Enter Password"
-          onChange={passwordChangeHandler}
-          onBlur={passwordInputBlurHandler}
-        />
-        {enteredPasswordIsInvalid && (
-          <p className={classes.error}>Password must not be empty.</p>
-        )}
-      </Form.Group>
-      <Form.Group className="mt-5">
-        {/* {formIsValid ? (
+    <Container>
+      <Form className={classes.login} onSubmit={formSubmitHandler}>
+        <Form.Group className="mb-3">
+          <Form.Label>Username</Form.Label>
+          <Form.Control
+            type="text"
+            value={enteredName}
+            placeholder="Enter Username"
+            onChange={usernameChangeHandler}
+            onBlur={nameInputBlurHandler}
+          />
+          {nameInputIsInvalid && (
+            <p className={classes.error}>Name must not be empty.</p>
+          )}
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            value={enteredPassword}
+            placeholder="Enter Password"
+            onChange={passwordChangeHandler}
+            onBlur={passwordInputBlurHandler}
+          />
+          {enteredPasswordIsInvalid && (
+            <p className={classes.error}>Password must not be empty.</p>
+          )}
+        </Form.Group>
+        <Form.Group className="mt-5">
+          {/* {formIsValid ? (
           <button onClick={formSubmitHandler}>Login</button>
         ) : (
           <button disabled onClick={formSubmitHandler}>
             Login
           </button>
         )} */}
-        <button disabled={!formIsValid} onClick={formSubmitHandler}>
-          Login
-        </button>
-      </Form.Group>
-    </Form>
+          <button disabled={!formIsValid} onClick={formSubmitHandler}>
+            Login
+          </button>
+        </Form.Group>
+      </Form>
+    </Container>
   );
 };
 

@@ -119,7 +119,7 @@ function EditModal(props) {
           <Button variant="secondary" onClick={props.onHideModal}>
             Close
           </Button>
-          <Button variant="primary" onClick={formSubmitHandler}>
+          <Button variant="secondary" onClick={formSubmitHandler}>
             Save Changes
           </Button>
         </Modal.Footer>

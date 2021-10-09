@@ -1,6 +1,7 @@
 .navbar {
   height: 5rem;
   background: rgb(170, 207, 219);
+  box-shadow: 0px 4px 20px rgb(0 0 0 / 30%);
 }
 
 .brand {
@@ -12,6 +13,23 @@
 .brand:hover {
   color: black;
 }
+
+.item {
+  color: black;
+  margin-left: 45px;
+  font-size: 23px;
+  text-decoration: none;
+}
+
+.item:hover {
+  border-bottom: 3px solid #fff;
+  color: black;
+}
+
+a.active {
+  border-bottom: 3px solid #fff;
+}
+
 button {
   border-radius: 5px;
   padding: 5px 10px;

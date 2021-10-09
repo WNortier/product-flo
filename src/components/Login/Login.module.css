@@ -5,6 +5,7 @@
   padding: 25px;
   margin-top: 10%;
   border-radius: 5px;
+  box-shadow: 1px 4px 20px rgba(0 0 0 / 30%);
 }
 
 form button {
@@ -23,7 +24,7 @@ form button:active {
 form button:disabled,
 form button:disabled:hover,
 form button:disabled:active {
-  background-color: #ccc;
+  background-color: #fff;
   color: #292929;
   border-color: #ccc;
   cursor: not-allowed;
@@ -34,7 +35,7 @@ form button:disabled:active {
 }
 
 @media (max-width: 501px) {
-  form {
+  .login {
     width: auto;
     margin: 20px;
   }

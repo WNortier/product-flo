@@ -2,7 +2,8 @@ import React from "react";
 import classes from "./Navigation.module.css";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory, NavLink } from "react-router-dom";
+
 const Navigation = (props) => {
   const history = useHistory();
 
@@ -15,9 +16,27 @@ const Navigation = (props) => {
   return (
     <Navbar className={classes.navbar}>
       <Container>
-        <Link className={classes.brand} to="/">
+        <div className={classes.brand}>
           ProductFlo <i class="fas fa-wind"></i>
-        </Link>
+        </div>
+        {props.isLoggedIn && (
+          <NavLink
+            activeClassName={classes.active}
+            className={classes.item}
+            to="/landing"
+          >
+            Landing
+          </NavLink>
+        )}
+        {props.isLoggedIn && (
+          <NavLink
+            activeClassName={classes.active}
+            className={classes.item}
+            to="/products"
+          >
+            Products
+          </NavLink>
+        )}
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>

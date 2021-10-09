@@ -5,11 +5,27 @@ form {
 table {
   margin-top: 10rem;
   background: lightblue;
+  z-index: 10;
 }
 
 .breadcrumb {
+  display: flex;
+  margin: 15px;
+}
+
+.spacer {
+  font-size: 20px;
+  color: #fff;
+}
+
+.breadcrumb a {
   font-size: 20px;
   text-decoration: none;
+  color: #fff;
+}
+
+.breadcrumb a:hover {
+  color: lightblue;
 }
 
 tr.item {

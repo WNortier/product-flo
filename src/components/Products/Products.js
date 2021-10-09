@@ -68,108 +68,109 @@ const Products = (props) => {
   };
 
   return (
-    <Container>
-      <Link className={classes.breadcrumb} to="/landing">
-        Landing/
-      </Link>
-      <Link className={classes.breadcrumb} to="/products">
-        Products
-      </Link>
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>
-              {" "}
-              <button onClick={showAddModalHandler}>
-                <i class="fas fa-plus"></i>
-              </button>
-            </th>
-            <th>
-              {" "}
-              <NameDropdown
-                onFilterProducts={setProducts}
-                products={products}
-              ></NameDropdown>
-            </th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Product Name</th>
-            <th>Product Number</th>
-            <th>Region</th>
-            <th>Family</th>
-            <th>Type</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map(function (item) {
-            return (
-              <tr className={classes.item}>
-                <td>{item.id}</td>
-                <td>{item.productName}</td>
-                <td>{item.productNumber}</td>
-                <td>{item.region}</td>
-                <td>{item.family}</td>
-                <td>{item.type}</td>
-                <td>
-                  <button
-                    onClick={() => {
-                      showUIModalHandler(item.id);
-                    }}
-                  >
-                    View
-                  </button>
-                </td>
-                <td>
-                  <button
-                    onClick={() => {
-                      showEditModalHandler(item.id);
-                    }}
-                  >
-                    Edit
-                  </button>
-                </td>
-                <td>
-                  <button
-                    onClick={() => {
-                      removeItemHandler(item.id);
-                    }}
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </Table>
-      {showUIModal && (
-        <UIModal
-          selectedProduct={selectedProduct}
-          onHideModal={hideUIModalHandler}
-        ></UIModal>
-      )}
-      {showEditModal && (
-        <EditModal
-          selectedProduct={selectedProduct}
-          onHideModal={hideEditModalHandler}
-          onSaveProductEdit={setProducts}
-        ></EditModal>
-      )}
-      {showAddProductModal && (
-        <AddProductModal
-          onHideModal={hideAddModalHandler}
-          onAddProduct={setProducts}
-          products={products}
-        ></AddProductModal>
-      )}
-    </Container>
+    <>
+      <Container>
+        <div className={classes.breadcrumb}>
+          <Link to="/landing">Landing</Link>
+          <div className={classes.spacer}>/</div>
+          <Link to="/products">Products</Link>
+        </div>
+        <Table striped bordered hover responsive="md">
+          <thead>
+            <tr>
+              <th>
+                {" "}
+                <button onClick={showAddModalHandler}>
+                  <i class="fas fa-plus"></i>
+                </button>
+              </th>
+              <th>
+                {" "}
+                <NameDropdown
+                  onFilterProducts={setProducts}
+                  products={products}
+                ></NameDropdown>
+              </th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Product Name</th>
+              <th>Product Number</th>
+              <th>Region</th>
+              <th>Family</th>
+              <th>Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            {products.map(function (item) {
+              return (
+                <tr className={classes.item}>
+                  <td>{item.id}</td>
+                  <td>{item.productName}</td>
+                  <td>{item.productNumber}</td>
+                  <td>{item.region}</td>
+                  <td>{item.family}</td>
+                  <td>{item.type}</td>
+                  <td>
+                    <button
+                      onClick={() => {
+                        showUIModalHandler(item.id);
+                      }}
+                    >
+                      View
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      onClick={() => {
+                        showEditModalHandler(item.id);
+                      }}
+                    >
+                      Edit
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      onClick={() => {
+                        removeItemHandler(item.id);
+                      }}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </Table>
+        {showUIModal && (
+          <UIModal
+            selectedProduct={selectedProduct}
+            onHideModal={hideUIModalHandler}
+          ></UIModal>
+        )}
+        {showEditModal && (
+          <EditModal
+            selectedProduct={selectedProduct}
+            onHideModal={hideEditModalHandler}
+            onSaveProductEdit={setProducts}
+          ></EditModal>
+        )}
+        {showAddProductModal && (
+          <AddProductModal
+            onHideModal={hideAddModalHandler}
+            onAddProduct={setProducts}
+            products={products}
+          ></AddProductModal>
+        )}
+      </Container>
+    </>
   );
 };
 

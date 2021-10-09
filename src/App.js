@@ -70,7 +70,7 @@ function App() {
   }, []);
 
   return (
-    <div className={classes.landing}>
+    <>
       <AuthContext.Provider
         value={{
           products: products,
@@ -82,7 +82,6 @@ function App() {
         ></Navigation>
         <Route path="/" exact>
           <Login onLogin={setIsLoggedIn} onSetUsername={setUsername}></Login>
-          {/* <Redirect to="/landing"></Redirect> */}
         </Route>
         {isLoggedIn && (
           <Route path="/landing">
@@ -95,7 +94,7 @@ function App() {
           </Route>
         )}
       </AuthContext.Provider>
-    </div>
+    </>
   );
 }
 

@@ -8,13 +8,13 @@ import { Link } from "react-router-dom";
 const Home = (props) => {
   return (
     <Container>
-      <Link className={classes.breadcrumb} to="/landing">
-        Landing
-      </Link>
+      <div className={classes.breadcrumb}>
+        <Link to="/landing">Landing</Link>
+      </div>
       <Row>
-        <Col className={classes.home} md={12}>
+        <Col md={12}>
           <div className={classes.greeting}>
-            Good Morning {props.user}
+            Greetings {props.user}
             <br />
             Welcome to ProductFlo
           </div>

@@ -22,9 +22,6 @@ function UIModal(props) {
           <Button variant="secondary" onClick={props.onHideModal}>
             Close
           </Button>
-          <Button variant="primary" onClick={props.onHideModal}>
-            Save Changes
-          </Button>
         </Modal.Footer>
       </Modal>
     </>

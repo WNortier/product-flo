@@ -1,6 +1,6 @@
 import AuthContext from "../../store/auth-context";
 import React, { useContext } from "react";
-import classes from "./Dropdown.module.css";
+import classes from "./NameDropdown.module.css";
 const NameDropdown = (props) => {
   const ctx = useContext(AuthContext);
 
