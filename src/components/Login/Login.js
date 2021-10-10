@@ -101,6 +101,9 @@ const Login = (props) => {
           <button disabled={!formIsValid} onClick={formSubmitHandler}>
             Login
           </button>
+          <p>
+            Login using <code>admin admin</code> for permission editing
+          </p>
         </Form.Group>
       </Form>
     </Container>
