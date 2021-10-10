@@ -21,11 +21,12 @@ const Home = (props) => {
         </Col>
         <Col md={6}>
           <div className={classes["products-action"]}>
-            <Link to="/products">Products</Link>
+            <i class="fas fa-archive"></i> <Link to="/products">Products</Link>
           </div>
         </Col>
         <Col md={6}>
           <div className={classes["inventory-action"]}>
+            <i class="fas fa-cubes"></i>
             <Link to="/landing">Inventory</Link>
           </div>
         </Col>
