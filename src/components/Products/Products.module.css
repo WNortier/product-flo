@@ -3,7 +3,7 @@ form {
 }
 
 table {
-  margin-top: 10rem;
+  margin-top: 3%;
   background: lightblue;
   z-index: 10;
 }
@@ -41,4 +41,10 @@ table button:hover,
 table button:active {
   background-color: rgb(131, 201, 224);
   border-color: rgb(131, 201, 224);
+}
+
+table button:disabled {
+  background-color: #fff;
+  border-color: #fff;
+  cursor: not-allowed;
 }

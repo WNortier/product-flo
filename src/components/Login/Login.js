@@ -1,11 +1,13 @@
-import { React, useState } from "react";
+import { React, useState, useContext } from "react";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import classes from "./Login.module.css";
 import { useHistory } from "react-router-dom";
+import AuthContext from "../../store/auth-context";
 
 const Login = (props) => {
   const history = useHistory();
+  const ctx = useContext(AuthContext);
 
   const [enteredName, setEnteredName] = useState("");
   const [enteredNameTouched, setEnteredNameTouched] = useState(false);
@@ -29,10 +31,9 @@ const Login = (props) => {
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
-    setEnteredNameTouched(true);
 
-    if (!enteredNameIsValid) {
-      return;
+    if (enteredName === "admin" && enteredPassword === "admin") {
+      props.onSetIsAdmin(true);
     }
     setEnteredName("");
     setEnteredNameTouched(false);

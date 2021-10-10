@@ -44,7 +44,7 @@ const AuthContext = React.createContext({
       type: "Finished Good",
     },
   ],
-  isLoggedIn: false,
+  isAdmin: false,
 });
 
 export default AuthContext;

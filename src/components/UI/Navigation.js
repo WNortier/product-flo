@@ -8,9 +8,10 @@ const Navigation = (props) => {
   const history = useHistory();
 
   const logoutHandler = () => {
-    localStorage.clear();
+    localStorage.removeItem("isLoggedIn");
     history.push("/");
     props.onLogOut(false);
+    props.onSetIsAdmin(false);
   };
 
   return (

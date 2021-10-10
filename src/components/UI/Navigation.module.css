@@ -40,3 +40,9 @@ button:active {
   background-color: rgb(131, 201, 224);
   border-color: rgb(131, 201, 224);
 }
+
+@media (max-width: 768px) {
+  .item {
+    display: none;
+  }
+}

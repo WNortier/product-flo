@@ -8,6 +8,7 @@ import UIModal from "../UI/UIModal";
 import EditModal from "../UI/EditModal";
 import AddProductModal from "../UI/AddProductModal";
 import NameDropdown from "../UI/NameDropdown";
+import Permissions from "../Permissions/Permissions";
 import { Link } from "react-router-dom";
 
 const Products = (props) => {
@@ -18,9 +19,15 @@ const Products = (props) => {
   const [showAddProductModal, setShowAddProductModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState([]);
   const [products, setProducts] = useState([]);
+  const [addingRights, setAddingRights] = useState(null);
+  const [editingRights, setEditingRights] = useState(null);
 
   useEffect(() => {
     setProducts(props.products);
+    const getAddingRights = JSON.parse(localStorage.getItem("adding-rights"));
+    const getEditingRights = JSON.parse(localStorage.getItem("editing-rights"));
+    setEditingRights(getEditingRights);
+    setAddingRights(getAddingRights);
   }, [props.products]);
 
   const hideUIModalHandler = () => {
@@ -67,6 +74,16 @@ const Products = (props) => {
     setProducts(remainingProducts);
   };
 
+  const showAddingRights = addingRights ? (
+    <button onClick={showAddModalHandler}>
+      <i class="fas fa-plus"></i>
+    </button>
+  ) : (
+    <button disabled onClick={showAddModalHandler}>
+      <i class="fas fa-plus"></i>
+    </button>
+  );
+
   return (
     <>
       <Container>
@@ -75,15 +92,16 @@ const Products = (props) => {
           <div className={classes.spacer}>/</div>
           <Link to="/products">Products</Link>
         </div>
+        {props.isAdmin && (
+          <Permissions
+            onSetAddingRights={setAddingRights}
+            onSetEditingRights={setEditingRights}
+          ></Permissions>
+        )}
         <Table striped bordered hover responsive="md">
           <thead>
             <tr>
-              <th>
-                {" "}
-                <button onClick={showAddModalHandler}>
-                  <i class="fas fa-plus"></i>
-                </button>
-              </th>
+              <th>{showAddingRights}</th>
               <th>
                 {" "}
                 <NameDropdown
@@ -110,7 +128,7 @@ const Products = (props) => {
           <tbody>
             {products.map(function (item) {
               return (
-                <tr className={classes.item}>
+                <tr key={item.id} className={classes.item}>
                   <td>{item.id}</td>
                   <td>{item.productName}</td>
                   <td>{item.productNumber}</td>
@@ -127,22 +145,44 @@ const Products = (props) => {
                     </button>
                   </td>
                   <td>
-                    <button
-                      onClick={() => {
-                        showEditModalHandler(item.id);
-                      }}
-                    >
-                      Edit
-                    </button>
+                    {editingRights ? (
+                      <button
+                        onClick={() => {
+                          showEditModalHandler(item.id);
+                        }}
+                      >
+                        Edit
+                      </button>
+                    ) : (
+                      <button
+                        disabled
+                        onClick={() => {
+                          showEditModalHandler(item.id);
+                        }}
+                      >
+                        Edit
+                      </button>
+                    )}
                   </td>
                   <td>
-                    <button
-                      onClick={() => {
-                        removeItemHandler(item.id);
-                      }}
-                    >
-                      Delete
-                    </button>
+                    {editingRights ? (
+                      <button
+                        onClick={() => {
+                          removeItemHandler(item.id);
+                        }}
+                      >
+                        Delete
+                      </button>
+                    ) : (
+                      <button
+                        disabled
+                        onClick={() => {
+                          removeItemHandler(item.id);
+                        }}
+                      >
+                        Delete
+                      </button>
+                    )}
                   </td>
                 </tr>
               );
