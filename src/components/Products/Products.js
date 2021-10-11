@@ -19,8 +19,8 @@ const Products = (props) => {
   const [showAddProductModal, setShowAddProductModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState([]);
   const [products, setProducts] = useState([]);
-  const [addingRights, setAddingRights] = useState(null);
-  const [editingRights, setEditingRights] = useState(null);
+  const [addingRights, setAddingRights] = useState(false);
+  const [editingRights, setEditingRights] = useState(false);
 
   useEffect(() => {
     setProducts(props.products);

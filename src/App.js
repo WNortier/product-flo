@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useEffect, useContext } from "react";
+import { useEffect } from "react";
 import Navigation from "./components/UI/Navigation";
 import { useState } from "react";
 import Landing from "./components/Landing/Landing";

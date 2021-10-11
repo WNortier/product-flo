@@ -1,13 +1,11 @@
-import { React, useState, useContext } from "react";
+import { React, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import classes from "./Login.module.css";
 import { useHistory } from "react-router-dom";
-import AuthContext from "../../store/auth-context";
 
 const Login = (props) => {
   const history = useHistory();
-  const ctx = useContext(AuthContext);
 
   const [enteredName, setEnteredName] = useState("");
   const [enteredNameTouched, setEnteredNameTouched] = useState(false);
@@ -91,13 +89,6 @@ const Login = (props) => {
           )}
         </Form.Group>
         <Form.Group className="mt-5">
-          {/* {formIsValid ? (
-          <button onClick={formSubmitHandler}>Login</button>
-        ) : (
-          <button disabled onClick={formSubmitHandler}>
-            Login
-          </button>
-        )} */}
           <button disabled={!formIsValid} onClick={formSubmitHandler}>
             Login
           </button>
